@@ -23,4 +23,10 @@ int main() {
     PrintArray("evens", evens);
 
     //copy the array
+    int evens_copy[SIZE] = {};
+    //evens_copy = evens; //shallow copies won't work!, need a deep copy (use iteration)
+    for(unsigned int i=0; i<SIZE; ++i) {
+        evens_copy[i] = evens[i];
+    }
+    PrintArray("evens_copy", evens_copy);
 }
