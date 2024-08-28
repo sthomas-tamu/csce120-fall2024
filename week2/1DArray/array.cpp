@@ -39,6 +39,7 @@ int main() {
         cout << "Input number of random values to load: ";
         cin >> size; // could check for bad input here, but will let loadRandom() do it
 
+        size = std::min(size, CAPACITY); // making sure size is not ever larger than CAPACITY
         loadRandom(ary, size);
         break;
 
