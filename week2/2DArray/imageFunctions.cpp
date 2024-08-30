@@ -244,16 +244,11 @@ void sepiaImage(Pixel image[MAX_WIDTH][MAX_HEIGHT], unsigned int width, unsigned
       unsigned int newRed = 0.393 * image[col][row].r + 0.768 * image[col][row].g + 0.189 * image[col][row].b;
       unsigned int newGreen = 0.349 * image[col][row].r + 0.686 * image[col][row].g + 0.168 * image[col][row].b;
       unsigned int newBlue = 0.272 * image[col][row].r + 0.534 * image[col][row].g + 0.131 * image[col][row].b;
-      if (newRed > 255) {
-        newRed = 255;
-      }
-      if (newGreen > 255) {
-        newGreen = 255;
-      }
-      if (newBlue > 255) {
-        newBlue = 255;
-      }
 
+      unsigned int maxColor = 255;
+      newRed = std::min(newRed, maxColor);
+      newGreen = std::min(maxColor, newGreen);
+      newBlue = std::min(maxColor, newBlue);
 
       image[col][row] = {newRed, newGreen, newBlue};
     }
