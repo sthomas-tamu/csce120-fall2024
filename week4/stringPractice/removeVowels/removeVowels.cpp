@@ -21,7 +21,16 @@ int main() {
   getline(cin, text); // get entire line including spaces.
   
   // add code to replace vowels with random symbols from set
-
+  for (size_t i=0; i<vowels.size(); ++i) { // for each vowel, find every occurance and replace it with a symbol
+    size_t position = 0; // start at the beginning of the text
+    do { // scan until reach the end of the text
+      position = text.find_first_of(vowels.at(i));
+      if (position != string::npos) { // replace character
+        size_t index = rand() % symbols.size();
+        text.at(position) = symbols.at(index);
+      }
+    } while (position != string::npos);
+  }
   
   cout << "Your modified phrase: " << text << endl;
 }
