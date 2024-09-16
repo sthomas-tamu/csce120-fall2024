@@ -93,10 +93,10 @@ void loadImage(const string filename, Pixel image[MAX_WIDTH][MAX_HEIGHT],
     throw std::invalid_argument("Input width and/or height does not match file");   
   }
   if (width > MAX_WIDTH) {
-    throw std::out_of_range(width + " cannot be greater than" + MAX_WIDTH);
+    throw std::out_of_range(std::to_string(width) + " cannot be greater than" + std::to_string(MAX_WIDTH));
   }
   if (height > MAX_HEIGHT) {
-    throw std::out_of_range(height + " cannot be greater than" + MAX_HEIGHT);
+    throw std::out_of_range(std::to_string(height) + " cannot be greater than" + std::to_string(MAX_HEIGHT));
   }
 
 
