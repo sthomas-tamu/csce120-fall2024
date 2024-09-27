@@ -10,7 +10,7 @@ int main() {
     while(!cin.fail()) { // data was successfully read 
         cout << "You entered: " << val << endl;
 
-	if(!cin.eof()) { // haven't reached the end (this doesn't happen with keyboard input, but could happen with a file)
+	    if(!cin.eof()) { // haven't reached the end (this doesn't happen with keyboard input, but could happen with a file)
 
             cin.clear(); // set all stream state bits to zero, buffer NOT cleared
 
