@@ -38,9 +38,9 @@ int main() {
       switch (toupper(menuChoice)) { // clean up input data by converting character to upper case
         case 'L':
           cout << "Input number of random values to load: ";
-          cin >> size;
+          cin >> newSize;
   
-          loadRandom(ary, size);
+          loadRandom(newSize, ary, size);
           break;
   
         case 'I':
@@ -51,7 +51,6 @@ int main() {
           cin >> index;
   
           insert(num, index, ary, size); 
-          size++;
           break;
   
         case 'R':
@@ -59,16 +58,13 @@ int main() {
           cin >> index;
   
           removeAtIndex(index, ary, size);
-          size--;
           break;
   
         case 'F':
           cout << "Input value to delete: ";
           cin >> num;
   
-          if(removeFirstOf(num, ary, size)) {
-            size--;
-          }
+          removeFirstOf(num, ary, size);
           break;
   
         case 'X':

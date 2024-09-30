@@ -24,10 +24,12 @@ void print(const int ary[], unsigned int size) {
 }
 
 
-void loadRandom(int ary[], unsigned int size) {
-  if(size > CAPACITY) {
+void loadRandom(unsigned int newSize, int ary[], unsigned int& size) {
+  if(newSize > CAPACITY) {
     throw std::out_of_range("size cannot be greater than " + std::to_string(CAPACITY));
   }
+
+  size = newSize;
 
   for (unsigned int i=0; i<size; ++i) {
     ary[i] = rand() % 100;
@@ -35,7 +37,7 @@ void loadRandom(int ary[], unsigned int size) {
 }
 
 
-void insert(int val, unsigned int index, int ary[], unsigned int size) {
+void insert(int val, unsigned int index, int ary[], unsigned int& size) {
   // check if array already full (at CAPACITY)  
   // if so, throw an exception
   if (size == CAPACITY) {
@@ -55,10 +57,13 @@ void insert(int val, unsigned int index, int ary[], unsigned int size) {
 
   // insert the new element
   ary[index] = val;
+
+  // increment size
+  size++;
 }
 
 
-void removeAtIndex(unsigned int index, int ary[], unsigned int size) {
+void removeAtIndex(unsigned int index, int ary[], unsigned int& size) {
   // check if requesting to remove past the size and do nothing
   if (index >= size) { // note index can't be negative so don't need to check
     throw std::out_of_range("index must be between 0 and " + std::to_string(size-1));
@@ -68,18 +73,18 @@ void removeAtIndex(unsigned int index, int ary[], unsigned int size) {
   for (unsigned int i = index; i < size; i++) {
     ary[i] = ary[i+1];
   }
+  size--;
 }
 
 
-bool removeFirstOf(int val, int ary[], unsigned int size) {
+void removeFirstOf(int val, int ary[], unsigned int& size) {
   for (unsigned int i=0; i<size; ++i) {
     if (ary[i] == val) {
-      removeAtIndex(i, ary, size);
-      return true;
+      removeAtIndex(i, ary, size); // removeAtIndex automatically updates size
+      return;
     }
   }
   cout << "Warning, item not found, nothing removed from array" << endl;
-  return false;
 }
 
 
