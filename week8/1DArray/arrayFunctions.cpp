@@ -6,6 +6,14 @@ using std::cin, std::cout, std::endl;
 
 // print including empty
 void print(const int ary[], unsigned int size) {
+  /*
+  cout << "DEBUG: print: ary = " << ary << endl;
+  for (unsigned int i=0; i<size; ++i) {
+    cout << ary[i] << " ";
+  }
+  cout << endl;
+  */
+
   if (size == 0) {
     cout << "Empty Array" << endl;
 
@@ -22,9 +30,9 @@ void print(const int ary[], unsigned int size) {
   }
 }
 
-// UPDATE STARTED
-void loadRandom(unsigned int newSize, int ary[], unsigned int& size) {
-  /*
+// UPDATED!
+void loadRandom(unsigned int newSize, int*& ary, unsigned int& size) {
+  /* //no longer needed
   if(newSize > CAPACITY) {
     throw std::out_of_range("size cannot be greater than " + std::to_string(CAPACITY));
   }
@@ -32,24 +40,36 @@ void loadRandom(unsigned int newSize, int ary[], unsigned int& size) {
 
   size = newSize;
 
+  // release the memory for the existing array
   if(ary != nullptr) {
     delete[] ary;
   }
 
+  // create a new array
   ary = new int[size];
 
   for (unsigned int i=0; i<size; ++i) {
     ary[i] = rand() % 100;
   }
+
+  /*
+  cout << "DEBUG: load: ary = " << ary << endl;
+  for (unsigned int i=0; i<size; ++i) {
+    cout << ary[i] << " ";
+  }
+  cout << endl;
+  */
 }
 
-//UPDATE
-void insert(int val, unsigned int index, int ary[], unsigned int& size) {
+//UPDATED!
+void insert(int val, unsigned int index, int*& ary, unsigned int& size) {
+  /*
   // check if array already full (at CAPACITY)  
   // if so, throw an exception
   if (size == CAPACITY) {
     throw std::invalid_argument("array already at capacity, can only hold " + std::to_string(CAPACITY) + " elements");
   }
+  */
 
   // check if requesting to insert past the current size
   // if so, throw an exception
@@ -58,18 +78,33 @@ void insert(int val, unsigned int index, int ary[], unsigned int& size) {
   }
 
   // make room to insert the new element
+  // update newAry instead
+  int* newAry = new int[size+1];
   for (unsigned int i = size; i > index; --i) {
-    ary[i] = ary[i-1];
+    //ary[i] = ary[i-1];
+    newAry[i] = ary[i-1];
   }
 
   // insert the new element
-  ary[index] = val;
+  //ary[index] = val;
+  newAry[index] = val;
+
+  // copy over remaining elements into newAry
+  for (unsigned int i=index; i>0; --i) {
+    newAry[i-1] = ary[i];
+  }
 
   // increment size
   size++;
+
+  // release the memory for the old ary and point it to newAry
+  delete[] ary;
+  ary = newAry;
+
+  newAry = nullptr; // good habit but not needed since function is ending
 }
 
-//UPDATE
+//UPDATE not needed, can just use less of the memory already allocated
 void removeAtIndex(unsigned int index, int ary[], unsigned int& size) {
   // check if requesting to remove past the size and do nothing
   if (index >= size) { // note index can't be negative so don't need to check
@@ -83,7 +118,7 @@ void removeAtIndex(unsigned int index, int ary[], unsigned int& size) {
   size--;
 }
 
-//UPDATE
+//UPDATE not needed, can just use less of the memory already allocated
 void removeFirstOf(int val, int ary[], unsigned int& size) {
   for (unsigned int i=0; i<size; ++i) {
     if (ary[i] == val) {
