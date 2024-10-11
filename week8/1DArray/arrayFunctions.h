@@ -1,13 +1,15 @@
 #ifndef ARRAYFUNCTIONS_H
 #define ARRAYFUNCTIONS_H
 
-const unsigned int CAPACITY = 100; // make largest size we will ever need
+//const unsigned int CAPACITY = 100; // make largest size we will ever need
+
+void resize(int*& ary, unsigned int& capacity);
 
 void print(const int ary[], unsigned int size);
 
-void loadRandom(unsigned int newSize, int*& ary, unsigned int& size);
+void loadRandom(unsigned int newSize, int*& ary, unsigned int& size, unsigned int& capacity);
 
-void insert(int val, unsigned int index, int*& ary, unsigned int& size);
+void insert(int val, unsigned int index, int*& ary, unsigned int& size, unsigned int& capacity);
 
 void removeAtIndex(unsigned int index, int ary[], unsigned int& size);
 void removeFirstOf(int val, int ary[], unsigned int& size);

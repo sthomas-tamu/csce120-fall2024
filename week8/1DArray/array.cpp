@@ -16,6 +16,7 @@ int main() {
   //int ary[CAPACITY] = {0};
   int* ary = nullptr;
   unsigned int size = 0;
+  unsigned int capacity = 0;
  
   char menuChoice = ' ';
 
@@ -41,7 +42,7 @@ int main() {
           cout << "Input number of random values to load: ";
           cin >> newSize;
   
-          loadRandom(newSize, ary, size);
+          loadRandom(newSize, ary, size, capacity);
           break;
   
         case 'I':
@@ -51,7 +52,7 @@ int main() {
           cout << "Input index to insert: ";
           cin >> index;
   
-          insert(num, index, ary, size); 
+          insert(num, index, ary, size, capacity); 
           break;
   
         case 'R':

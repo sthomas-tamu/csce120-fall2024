@@ -4,6 +4,38 @@
 
 using std::cin, std::cout, std::endl;
 
+// grow the array, doubling in size each time
+// don't have memory leaks
+void resize(int*& ary, unsigned int& capacity) {
+  // make a temporary new ary and capacity
+  unsigned int newCapacity = 2*capacity;
+  if (newCapacity == 0) {
+    newCapacity = 1;
+  }
+  int* newAry = new int[newCapacity];
+
+  // copy over data from ary to newAry
+  for (unsigned int i=0; i<capacity; i++) {
+    newAry[i] = ary[i];
+  }
+
+  // be kind and initialize rest
+   for (unsigned int i=capacity; i<newCapacity; i++) {
+    newAry[i] = 0;
+  } 
+
+  // update ary and delete the old
+  if(ary != nullptr) {
+    delete[] ary;
+  }
+  ary = newAry;
+  newAry = nullptr; // not needed, but good habit
+
+  //update capacity
+  capacity = newCapacity;
+}
+
+
 // print including empty
 void print(const int ary[], unsigned int size) {
   /*
@@ -31,7 +63,7 @@ void print(const int ary[], unsigned int size) {
 }
 
 // UPDATED!
-void loadRandom(unsigned int newSize, int*& ary, unsigned int& size) {
+void loadRandom(unsigned int newSize, int*& ary, unsigned int& size, unsigned int& capacity) {
   /* //no longer needed
   if(newSize > CAPACITY) {
     throw std::out_of_range("size cannot be greater than " + std::to_string(CAPACITY));
@@ -40,13 +72,9 @@ void loadRandom(unsigned int newSize, int*& ary, unsigned int& size) {
 
   size = newSize;
 
-  // release the memory for the existing array
-  if(ary != nullptr) {
-    delete[] ary;
+  while (size > capacity) {
+    resize(ary, capacity);
   }
-
-  // create a new array
-  ary = new int[size];
 
   for (unsigned int i=0; i<size; ++i) {
     ary[i] = rand() % 100;
@@ -62,7 +90,7 @@ void loadRandom(unsigned int newSize, int*& ary, unsigned int& size) {
 }
 
 //UPDATED!
-void insert(int val, unsigned int index, int*& ary, unsigned int& size) {
+void insert(int val, unsigned int index, int*& ary, unsigned int& size, unsigned int& capacity) {
   /*
   // check if array already full (at CAPACITY)  
   // if so, throw an exception
@@ -78,30 +106,18 @@ void insert(int val, unsigned int index, int*& ary, unsigned int& size) {
   }
 
   // make room to insert the new element
-  // update newAry instead
-  int* newAry = new int[size+1];
-  for (unsigned int i = size; i > index; --i) {
-    //ary[i] = ary[i-1];
-    newAry[i] = ary[i-1];
+  if (size+1 > capacity) {
+    resize(ary, capacity);
+  }
+  for (unsigned int i=size; i>index; --i) {
+    ary[i] = ary[i-1];
   }
 
   // insert the new element
-  //ary[index] = val;
-  newAry[index] = val;
-
-  // copy over remaining elements into newAry
-  for (unsigned int i=index; i>0; --i) {
-    newAry[i-1] = ary[i];
-  }
-
+  ary[index] = val;
+  
   // increment size
   size++;
-
-  // release the memory for the old ary and point it to newAry
-  delete[] ary;
-  ary = newAry;
-
-  newAry = nullptr; // good habit but not needed since function is ending
 }
 
 //UPDATE not needed, can just use less of the memory already allocated
