@@ -35,12 +35,22 @@ unsigned int getMedian(unsigned int a, unsigned int b, unsigned int c) {
 
 Pixel createMedianPixel(Pixel p1, Pixel p2, Pixel p3) {
     // TODO: return a pixel whose R/G/B values are the median of the input pixels
+    Pixel result;
+    result.r = getMedian(p1.r, p2.r, p3.r);
+    result.g = getMedian(p1.g, p2.g, p3.g);
+    result.b = getMedian(p1.b, p2.b, p3.b);
+    
+    return result;
 }
 
 
 Pixel** makeImage(unsigned int width, unsigned int height) {
     //TODO create a new 2d array of Pixels in column-major order
-
+    Pixel** image = new Pixel*[width];
+    for(unsigned int i=0; i<height; ++i) {
+        image[i] = new Pixel[height];
+    }
+    return image;
 }
 
 

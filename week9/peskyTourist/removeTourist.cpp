@@ -54,7 +54,11 @@ int main() {
 
         // Process out that pesky tourist
         // TODO: set every Pixel of the result image to be the median r/g/b value from the input images
-
+        for(unsigned int col = 0; col<width; col++) {
+            for(unsigned int row = 0; row<height; row++) {
+                result[col][row] = createMedianPixel(img1[col][row], img2[col][row], img3[col][row]);
+            }
+        }
 
         // output result image
         outputImage(outFile, result, width, height);
