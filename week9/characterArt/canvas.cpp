@@ -67,12 +67,23 @@ void resizeCanvas(char**& canvas, unsigned int& width,  unsigned int& height, un
 void printCanvas(const char*const* canvas, unsigned int width, unsigned int height) {
     cout << "DEBUG: printCanvas" << endl;
 
+    for (unsigned int col=0; col<width+2; ++col) {
+        cout << "-";
+    }
+    cout << endl;
+
     for (unsigned int row=0; row<height; ++row) {
+        cout << "|";
         for (unsigned int col=0; col<width; ++col) {
             cout << canvas[row][col];
         }
-        cout << endl;
+        cout << "|" << endl;
     }
+
+    for (unsigned int col=0; col<width+2; ++col) {
+        cout << "-";
+    }
+    cout << endl;
 }
 
 
