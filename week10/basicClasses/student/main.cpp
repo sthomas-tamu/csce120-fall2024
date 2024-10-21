@@ -7,8 +7,8 @@ int main() {
 
   Student Student1("Alice", 1234);
   Student Student2("Bob");
-  auto Student3 = Student(5678);
-  Student Student4 = Student();
+  auto Student3 = Student(5678); // can use "auto" to tell the compiler to figure out the appropriate data type for Student3, must provide enough information (such as by assigning to a Student object) to not be ambiguous
+  Student Student4; // calls the default constructor
 
   /* 
   cout << "My name is" << Student1.name << "and my UIN is" << Student1.uin << "\n";
