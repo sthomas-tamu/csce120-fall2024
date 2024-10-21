@@ -23,8 +23,8 @@ int main() {
             cin >> c;
             if (cin.fail()) {
                 // reset cin and throw an exception
-		cin.clear(); 
-		cin.ignore();
+		        cin.clear(); 
+		        cin.ignore();
                 throw std::invalid_argument("Character read failed");
             }
         
@@ -32,15 +32,15 @@ int main() {
             cin >> row;
             if (cin.fail()) {
                 // reset cin and throw an exception
-		cin.clear();
-		cin.ignore();
+		        cin.clear();
+		        cin.ignore();
                 throw std::invalid_argument("Invalid input for row");
             }
             cin >> col;
             if (cin.fail()) {
                 // reset cin and throw an exception
-		cin.clear();
-		cin.ignore();
+		        cin.clear();
+		        cin.ignore();
                 throw std::invalid_argument("Invalid input for col");
             }
     
