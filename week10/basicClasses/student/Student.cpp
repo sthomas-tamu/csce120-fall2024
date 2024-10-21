@@ -30,10 +30,6 @@ Student::Student() {
     uin = 0;
 }
 
-// always think about which constructors you want to have;
-// should we be able to make a student without a name or uin?
-
-
 // implementing member functions
 //  - typically you want to keep all implementation in the .cpp file,
 //    but sometimes if it is a very simple function (like a getter/setter)
