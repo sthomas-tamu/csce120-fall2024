@@ -5,9 +5,9 @@ using std::cout, std::endl;
 
 int main() {
 
-  auto Student1 = Student("Alice", 1234);
-  auto Student2 = Student("Bob");
-  Student Student3 = Student(5678);
+  Student Student1("Alice", 1234);
+  Student Student2("Bob");
+  auto Student3 = Student(5678);
   Student Student4 = Student();
 
   /* 
