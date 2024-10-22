@@ -54,13 +54,20 @@ void resizeCanvas(char**& canvas, unsigned int& width,  unsigned int& height, un
 
     //TODO
     // make new canvas
-    char** newCanvas = nullptr;
+    char** newCanvas = makeCanvas(newWidth, newHeight);
   
     // copy over data
+    for(unsigned int row=0; row<width; ++row)
+        for(unsigned int col=0; col<height; ++col)
+            newCanvas[row][col] = canvas[row][col];
   
     // delete old memory
+    releaseCanvas(canvas, width, height);
   
     // update canvas reference variables
+    canvas = newCanvas;
+    width = newWidth;
+    height = newHeight;
 }
 
 
