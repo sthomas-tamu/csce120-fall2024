@@ -20,17 +20,17 @@ Date::Date(int year, int month, int day):
   }
 
 
-bool Date::validYear(int year) {
+bool Date::validYear(int year) const {
     return (year >= 1 && year <= 3000);
 }
 
 
-bool Date::validMonth(int month) {
+bool Date::validMonth(int month) const {
     return (month >= 1 && month <= 12);
 }
  
 
-bool Date::validDay(int day) {
+bool Date::validDay(int day) const {
     if (day < 1 || day > 31) {
         return false;
     }
@@ -64,7 +64,7 @@ bool Date::validDay(int day) {
 }
 
  
-std::string Date::to_string() {
+std::string Date::to_string() const {
     std::ostringstream oss;
     oss << month << "/" << day << "/" << year;
     return oss.str();
@@ -86,7 +86,6 @@ void Date::setMonth(int month) {
 
     this->month = month;
 }
-
 
 void Date::setYear(int year) {
     if (!validYear(year)) {

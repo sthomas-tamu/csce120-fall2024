@@ -9,25 +9,25 @@ class Date {
     int month;
     int day;
         
-    bool validDay(int _day);
-    bool validMonth(int _month);
-    bool validYear(int _year);
+    bool validDay(int _day) const;
+    bool validMonth(int _month) const;
+    bool validYear(int _year) const;
     
   public:
     // Constructors
     Date() : year(2021), month(1), day(1) {}
     Date(int year, int month, int day);
 
-    std::string to_string();
+    std::string to_string() const;
 
     // Getters and Setters
-    int getDay() { return day; }
+    int getDay() const { return day; }
     void setDay(int day);
 
-    int getMonth() { return month; }
+    int getMonth() const { return month; }
     void setMonth(int month);
 
-    int getYear() { return year; }
+    int getYear() const { return year; }
     void setYear(int year);
 
     // Operators
