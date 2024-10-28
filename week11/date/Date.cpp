@@ -97,5 +97,23 @@ void Date::setYear(int year) {
 
 
 // add == definition
+bool Date::operator==(const Date& other) const {
+    return ((this->year == other.year) && 
+            (this->month == other.month) && 
+            (this->day == other.day));
+}
 
 // add < defintion
+bool Date::operator<(const Date& other) const {
+    if (this->year < other.year) {
+        return true;
+    } else if (this->year == other.year) {
+        if (this->month < other.month) {
+            return true;
+        } else if (this->month == other.month) {
+            return (this->day < other.day);
+        }
+        return false;
+    }
+    return false;
+}

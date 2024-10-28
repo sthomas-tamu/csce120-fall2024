@@ -32,8 +32,10 @@ class Date {
 
     // Operators
     // add == declaration
+    bool operator==(const Date& other) const;
     
     // add < declaration
+    bool operator<(const Date& other) const;
    
 }; 
 #endif
