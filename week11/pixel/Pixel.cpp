@@ -37,19 +37,31 @@ void Pixel::setBlue(unsigned short _blue) {
 
 // Operators
 
-// implement operator==
 bool Pixel::operator==(const Pixel& other) const {
+    return (this->red == other.red &&
+            this->green == other.green &&
+            this->blue == other.blue);
 }
 
-// implement operator=
 Pixel& Pixel::operator=(const Pixel& other) {
+    this->red = other.red;
+    this->green = other.green;
+    this->blue = other.blue;
+    return *this;
 }
 
-// implement operator+
 Pixel Pixel::operator+(const Pixel& other) {
+    Pixel newColor;
+    newColor.red = (this->red + other.red)/2;
+    newColor.green = (this->green + other.green)/2;
+    newColor.blue = (this->blue + other.blue)/2;
+    return newColor;
 }
 
-// implement operator-
 Pixel& Pixel::operator-() {
+    this->red = 255 - this->red;
+    this->green = 255 - this->green;
+    this->blue = 255 - this->blue;
+    return *this;
 }
 
