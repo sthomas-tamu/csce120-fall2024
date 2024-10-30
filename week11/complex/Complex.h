@@ -27,4 +27,10 @@ class Complex {
     Complex operator-() const;
 };
 
+std::ostream& operator<<(std::ostream& os, const Complex& c);
+
+Complex operator+(const Complex& lhs, const Complex& rhs);
+Complex operator+(const Complex& lhs, double rhs);
+Complex operator+(double lhs, const Complex& rhs);
+
 #endif

@@ -35,3 +35,22 @@ Complex Complex::operator-() const {
     return c;
 }
 
+
+std::ostream& operator<<(std::ostream& os, const Complex& c) {
+    os << c.to_string();
+    return os;
+}
+
+
+Complex operator+(const Complex& lhs, const Complex& rhs) { 
+    return Complex(lhs.getReal() + rhs.getReal(), lhs.getImaginary() + rhs.getImaginary()); 
+}
+
+Complex operator+(const Complex& lhs, double rhs) { 
+    return Complex(lhs.getReal() + rhs, lhs.getImaginary()); 
+}
+
+Complex operator+(double lhs, const Complex& rhs) { 
+    return Complex(lhs + rhs.getReal(), rhs.getImaginary()); 
+}
+
