@@ -11,6 +11,7 @@ int main() {
   DynamicIntArray a;
   printArray("with default constructor: a", a);
 
+  /*
   DynamicIntArray b(3, 4);
   printArray("with constructor for 3 elements equal to 4: b", b);
 
@@ -49,6 +50,7 @@ int main() {
   a.at(a.size()-1) = 11;
   printArray("a", a);
   printArray("c", c);
+  */
 }
 
 void printArray(std::string label, const DynamicIntArray& ary) {
@@ -56,7 +58,7 @@ void printArray(std::string label, const DynamicIntArray& ary) {
   if (ary.empty()) {
     cout << "Empty!" << endl;
   } else {
-    for (size_t i=0; i<ary.size(); ++i) {
+    for (size_t i=0; i<ary.getSize(); ++i) {
       cout << ary.at(i) << " ";
     }
     cout << endl;
