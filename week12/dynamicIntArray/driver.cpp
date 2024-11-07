@@ -47,7 +47,7 @@ int main() {
 
   // make sure was a deep copy
   cout << endl << "Changing last element of a, making sure was a deep copy of c:" << endl;
-  a.at(a.size()-1) = 11;
+  a.at(a.getSize()-1) = 11;
   printArray("a", a);
   printArray("c", c);
   */
