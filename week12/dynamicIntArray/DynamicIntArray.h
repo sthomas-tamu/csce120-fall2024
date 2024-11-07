@@ -16,7 +16,8 @@ class DynamicIntArray {
     bool empty() const;
     size_t getSize() const;
 
-    int& at(size_t index) const;
+    const int& at(size_t index) const;
+    int& at(size_t index);
 
     void push_back(int value);
 };
