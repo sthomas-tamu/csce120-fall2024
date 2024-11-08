@@ -1,6 +1,15 @@
 #include "DynamicIntArray.h"
 
-#include <exception>
+#include <stdexcept>
+
+DynamicIntArray::DynamicIntArray(size_t newSize, int init_value) : size(newSize), capacity(newSize) {
+    ary = new int[capacity];
+    for(size_t i=0; i<size; ++i) {
+        ary[i] = init_value;
+    }
+
+}
+
 
 bool DynamicIntArray::empty() const {
     return size == 0;
@@ -28,16 +37,30 @@ void DynamicIntArray::push_back(int value) {
     if(ary == nullptr) {
         ary = new int[1];
         ary[0] = value;
+        size = 1;
+        capacity = 1;
     } else {
-        if(size < capacity) {
-            ary[size] = value;
-            size++;
-        } else {
-            //IN PROGRESS, START HERE
+        if(size >= capacity) {
             this->resize(capacity*2);
-
         }
+        ary[size] = value;
+        size++;
     }
 }
+
+void DynamicIntArray::resize(size_t newCapacity) {
+    if(newCapacity > capacity) {
+        int* newAry = new int[newCapacity];
+        for(size_t i=0; i<size; ++i) {
+            newAry[i] = ary[i];
+        }
+        delete [] ary;
+        ary = newAry;
+        newAry = nullptr;
+        capacity = newCapacity;
+    }
+}
+
+
 
 

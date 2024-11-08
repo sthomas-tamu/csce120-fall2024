@@ -11,13 +11,18 @@ int main() {
   DynamicIntArray a;
   printArray("with default constructor: a", a);
 
-  /*
+  a.push_back(5);
+  printArray("push_back(5), a", a);
+
+  a.push_back(4);
+  printArray("push_back(4), a", a);
+
   DynamicIntArray b(3, 4);
   printArray("with constructor for 3 elements equal to 4: b", b);
-
+ 
   DynamicIntArray c(5);
   printArray("with constructor for 5 elements but no value specified: c", c);
-
+ /* 
   // exercise array indexing
   cout << endl << "Updating c by indexing:" << endl;
   c.at(2) = 9;

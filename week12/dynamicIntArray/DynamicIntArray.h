@@ -9,9 +9,12 @@ class DynamicIntArray {
     int* ary;
     size_t size, capacity;
 
+    void resize(size_t newCapacity);
+
   public:
     //constructor
     DynamicIntArray() : ary(nullptr), size(0), capacity(0) {}
+    DynamicIntArray(size_t newSize, int init_value = 0);
 
     bool empty() const;
     size_t getSize() const;
