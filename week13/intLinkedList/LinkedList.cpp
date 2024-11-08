@@ -1,5 +1,23 @@
 #include "LinkedList.h"
 
+LinkedList::LinkedList(const LinkedList& source) : head(nullptr), tail(nullptr) {
+    Node* cur = source.head;
+    while(cur != nullptr) {
+        insertBack(cur->data);
+        cur = cur->next;
+    }
+}
+
+LinkedList& LinkedList::operator=(const LinkedList& source) {
+    clear();
+    Node* cur = source.head;
+    while(cur != nullptr) {
+        insertBack(cur->data);
+        cur = cur->next;
+    }
+    return *this;
+}
+
 void LinkedList::clear() {
     while (head != nullptr) {
         Node* nodeToDelete = head;

@@ -15,8 +15,9 @@ class LinkedList {
 
   public:
     LinkedList() : head(nullptr), tail(nullptr) {}
-    // also need Copy Constructor and Copy Assignment
+    LinkedList(const LinkedList&);
     ~LinkedList() { clear(); }
+    LinkedList& operator=(const LinkedList&);
 
     void clear();
 

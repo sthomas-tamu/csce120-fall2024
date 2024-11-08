@@ -18,9 +18,17 @@ int main() {
     ll.insertFront(3);
     printTest("ll: insertFront(3)", ll);
 
+    LinkedList ll2(ll);
+    printTest("ll2: copy ll", ll2);
+
     ll.insertBack(7);
     printTest("ll: insertBack(7)", ll);
+    printTest("ll2:", ll2);
+
+    ll2 = ll;
+    printTest("ll2 = ll1", ll2);
 
     ll.clear();
     printTest("ll: clear", ll);
+    printTest("ll2:", ll2);
 }
