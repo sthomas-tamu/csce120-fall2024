@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ostream>
+#include <sstream>
 
 class Person {
     std::string name;
@@ -17,10 +18,17 @@ class Person {
 
     int getAge() const { return age; }
     void setAge(int newAge) { age = newAge; }
+
+    virtual std::string getString() const {
+        std::ostringstream os;
+        os << "***" << getName() << " (" << getAge() << ")";
+        return os.str();
+    }
+
 };
 
 std::ostream& operator<<(std::ostream& os, const Person& p) {
-    os << p.getName() << " (" << p.getAge() << ")";
+    os << p.getString();
     return os;
 }
 

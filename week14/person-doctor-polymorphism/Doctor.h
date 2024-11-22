@@ -12,6 +12,16 @@ class Doctor : public Person {
    
     std::string getSpecialty() const { return specialty; }
     void setSpecialty(std::string newSpecialty) { specialty = newSpecialty; }
+
+    virtual std::string getString() const {
+        std::ostringstream os;
+        //os << Person::getString();
+        os << getName() << " (" << getAge() << ")";
+        os << " [" << specialty << "]";
+        return os.str();
+    }
+
+
 };
 
 #endif
